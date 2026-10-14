@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <link rel="stylesheet" href="auth.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body class="body-container">
+    <header>
+      <nav>
+        <a>
+          <!-- 입력사항 없음 -->
+        </a>
+      </nav>
+    </header>
+
+    <main class="main-container">
+      <!-- 1. 회원가입 화면 - 판다로고 -->
+      <section class="logo-section">
+        <nav class="logo-nav" aria-label="주요 메뉴">
+          <a class="logo-block" href="index.html">
+            <img class="logo-face" src="image/panda_logo.png" alt="" />
+            <img
+              class="logo-text"
+              src="image/panda_sign.png"
+              alt="판다마켓 홈"
+            />
+          </a>
+        </nav>
+      </section>
+
+      <!-- 2. 회원가입 화면 - 사용자 정보 등록 -->
+      <form class="signup-form">
+        <!-- 회원가입 화면 - 사용자 이메일 -->
+        <div class="input-group">
+          <label for="email">이메일</label>
+          <input type="email" id="email" placeholder="이메일을 입력해 주세요" />
+        </div>
+
+        <!-- 회원가입 화면 - 사용자 닉네임 -->
+        <div class="input-group">
+          <label for="nickname">닉네임</label>
+          <input
+            type="nickname"
+            id="nickname"
+            placeholder="닉네임을 입력해 주세요"
+          />
+        </div>
+
+        <!-- 회원가입 화면 - 비밀번호 등록 -->
+        <div class="input-group">
+          <label for="password">비밀번호</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="password"
+              placeholder="비밀번호를 입력해 주세요"
+            />
+            <!-- 눈 모양 아이콘 (필요시 추가) -->
+            <button
+              type="button"
+              class="eye-icon-btn"
+              aria-label="비밀번호 표시"
+            >
+              <i class="fa-regular fa-eye-slash"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 회원가입 화면 - 비밀번호 확인 -->
+        <div class="input-group">
+          <label for="password">비밀번호 확인</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="password"
+              placeholder="비밀번호를 다시 한 번 입력해 주세요"
+            />
+            <!-- 눈 모양 아이콘 (필요시 추가) -->
+            <button
+              type="button"
+              class="eye-icon-btn"
+              aria-label="비밀번호 표시"
+            >
+              <i class="fa-regular fa-eye-slash"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 회원가입 화면 - 회원가입 버튼 -->
+        <!-- <a class="signup-button" href="./signup">회원가입</a> -->
+        <button type="submit" class="signup-btn" href="./signup">
+          회원가입
+        </button>
+      </form>
+
+      <!-- 3. 회원가입 화면 - 간편 로그인 -->
+      <section class="simplelogin-section" aria-label="간편 로그인">
+        <span class="simplelogin-text">간편 로그인하기</span>
+
+        <div class="simplelogin-iconbox" aria-label="간편 로그인 아이콘">
+          <a
+            class="simplelogin-icon"
+            href="https://www.google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="image/google-icon.png" alt="구글" />
+          </a>
+
+          <a
+            class="simplelogin-icon"
+            href="https://www.kakaocorp.com/page/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="image/kakao-icon.png" alt="카카오톡" />
+          </a>
+        </div>
+      </section>
+
+      <!-- 4. 회원가입 화면 - 로그인 화면 이동 Link -->
+      <section class="login-section">
+        <div class="login-text">
+          <p>이미 회원이신가요?</p>
+        </div>
+        <div class="login-link">
+          <!-- <a href="signup.html">회원가입</a> -->
+          <a href="login.html">로그인</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <!-- 입력사항 없음 -->
+    </footer>
+  </body>
+</html>

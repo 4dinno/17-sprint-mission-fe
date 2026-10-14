@@ -1,0 +1,312 @@
+/* 로컬 파일 다운로드 시 — @font-face는 항상 CSS 파일 맨 위에 작성.
+  다운로드한 폰트 파일을 fonts/ 폴더에 넣고 경로를 맞춰주세요. */
+/* @font-face {
+  font-family: "Pretendard";
+  src: url("./fonts/Pretendard-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+.font {
+    font-family: "Pretendard", sans-serif;
+  } */
+
+/* @font-face로 웹폰트 정의 */
+/* @font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-display: swap;
+} */
+
+/* 전체 폰트 설정 */
+body {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 400; /* @font-face에 지정한 굵기(100) 사용 */
+  margin: 0;
+}
+
+/* 요소의 너비(width) 속성이 전체 너비되도록 지정(안쪽 여백과 테두리를 포함)*/
+* {
+  box-sizing: border-box;
+}
+
+/* <<<< 상단 메뉴 영역 >>>> */
+
+/* 상단 메뉴 전체 설정 - 스크롤 시에도 최상단에 유지하기 */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+/* 로고와 로그인 링크를 담는 내부 영역 설정 */
+.header-content {
+  max-width: 1920px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 200px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 판다 얼굴과 글자 간격 띄우기 */
+.logo {
+  display: flex; /* 판다 로고와 판다마켓을 하나로 묶음 */
+  align-items: center; /* 세로 정열함 */
+  gap: 8px;
+  text-decoration: none;
+}
+
+/* 판다 로고 설정 */
+.logo-face {
+  height: 40px;
+  width: auto;
+}
+
+/* 판다마켓 이미지 설정 */
+.logo-text {
+  height: 30px;
+  width: auto;
+}
+
+/* 로그인 버튼 만들기 */
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 128px;
+  height: 48px;
+  background-color: #3692ff;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* 클릭할 수 있는 링크에 손 모양 커서를 표시 */
+/* 브라우저는 기본적으로 링크(<a> 태그)에 마우스를 올리면 손가락 모양으로 커서를 바꿈
+   하지만 href 속성이 없는 링크나, 버튼처럼 작동하도록 만든 커스텀 태그의 경우 커서가 기본 화살표 모양이 됨 */
+a {
+  cursor: pointer;
+}
+
+/* <<<< 1. 구경하러 가기 영역 >>>> */
+
+/* 구경하러 가기 영역 배경색 */
+.hero {
+  background-color: #cfe5ff;
+}
+
+/* 구경하러 가기 영역 전체 설정 */
+.hero-content {
+  max-width: 1110px;
+  height: 540px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+/* 문구와 구경하러가기 버튼 영역 */
+.hero-text {
+  flex-shrink: 0;
+  padding-bottom: 60px;
+}
+
+/* '일상의 모든 물건을..'에 폰트 설정 */
+.hero-text h1 {
+  color: #374151;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  /* margin: 0 0 32px;  */ /* 하단 간격 설정*/
+}
+
+/* 구경하러 가기 버튼 설정 */
+.browse-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 357px;
+  height: 56px;
+  background-color: #3692ff;
+  color: #ffffff;
+  border-radius: 28px;
+
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* 판다 이미지 설정 */
+.hero-image {
+  display: block;
+  width: 746px;
+  height: auto;
+  /* flex-shrink: 0; */
+  /* 부모 컨테이너(Flex Container)의 공간이 부족해져도, 
+  이 아이템(Flex Item)의 크기가 찌그러지거나 줄어들지 않고 
+  원래 크기를 유지(0)*/
+}
+
+/* <<<< 2. 인기 상품 소개 영역 >>>> */
+
+/* 영역 전체의 패딩, 배경색 설정 */
+.feature {
+  /* padding: 138px 344px; */
+  padding: 138px 20px; /* 화면이 좁아지더라도 좌우 20px만 유지, 344px 하니 너무 많이 남음*/
+  background-color: #ffffff;
+}
+
+/* 컨덴츠(이미지+문구) 영역의 최대폭, 마진, flex 속성 설정 */
+.feature-content {
+  max-width: 988px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+/* 이미지 영역 display 속성(이미지 하나만 독차지), 고정 폭, 높이, 요소의 원래 크기 줄지 않도록 고정(shrink) */
+.feature-image {
+  display: block;
+  width: 588;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* 화면이 줄어들더라고 텍스트 영역 사이즈가 줄어들지 않고 유지하도록 */
+.feature-text {
+  flex-shrink: 0;
+}
+
+/* 'Hot item'에 폰트 설정 */
+.feature-label {
+  color: #3692ff;
+  font-size: 18px;
+  font-weight: 700px;
+  line-height: 1.4;
+}
+
+/* '구매를 원하는 상품을..'에만 폰트 설정(h2 태그) */
+.feature-text h2 {
+  color: #374151;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* 가장 Hot한 중고거래 물품을...'에 폰트 설정 */
+.feature-description {
+  color: #374151;
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+/* <<<< 3. 구매 희망 상품 검색 영역 >>>> */
+
+/* 텍스트를 우측 정렬 */
+.feature-text-right {
+  text-align: right;
+}
+/* <<<< 4. 판매 희망 상품 등록 영역 >>>> */
+
+/* <<<< 5. 판다마켓 홍보 영역 >>>> */
+.hero-bottom {
+  background-color: #cfe5ff;
+}
+
+/* 홍보 문구와 이미지를 담는 내부 영역 */
+.hero-bottom-content {
+  max-width: 1110px;
+  height: 540px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+/* 홍보 문구 위치 설정 */
+.hero-bottom-text {
+  flex-shrink: 0;
+  padding-bottom: 172px;
+}
+
+/* 홍보 제목의 글자와 여백 설정 */
+.hero-bottom-text h2 {
+  color: #374151;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* 판다 이미지 설정 */
+.hero-bottom-image {
+  display: block;
+  width: 746px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* 6.라이선스 및 Privacy-FAQ, SNS 링크 영역 */
+
+/* 화면 전체 너비를 채우는 푸터 배경 설정 */
+.site-footer {
+  min-height: 160px;
+  background-color: #111827;
+}
+
+.footer-content {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 32px 200px; /*좌우 여백은 200px*/
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copylight {
+  color: #ffffff;
+  font-size: 16px;
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.footer-sns {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-sns a {
+  display: block;
+}
+
+.footer-sns img {
+  display: block;
+  width: 20px;
+  height: 20px;
+}

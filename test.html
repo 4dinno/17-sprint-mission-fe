@@ -1,0 +1,49 @@
+<form class="login-form">
+  <!-- 회원가입 화면 - 사용자 이메일 -->
+  <div class="input-group">
+    <label for="email">이메일</label>
+    <input type="email" id="email" placeholder="이메일을 입력해 주세요" />
+  </div>
+
+  <!-- 회원가입 화면 - 사용자 닉네임 -->
+  <div class="input-group">
+    <label for="nickname">닉네임</label>
+    <input type="nickname" id="nickname" placeholder="닉네임을 입력해 주세요" />
+  </div>
+
+  <!-- 회원가입 화면 - 비밀번호 등록 -->
+  <div class="input-group">
+    <label for="password">비밀번호</label>
+    <div class="password-wrapper">
+      <input
+        type="password"
+        id="password"
+        placeholder="비밀번호를 입력해 주세요"
+      />
+      <!-- 눈 모양 아이콘 (필요시 추가) -->
+      <button type="button" class="eye-icon-btn" aria-label="비밀번호 표시">
+        <i class="fa-regular fa-eye-slash"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 회원가입 화면 - 비밀번호 확인 -->
+  <div class="input-group">
+    <label for="password-check">비밀번호 확인</label>
+    <div class="password-wrapper">
+      <input
+        type="password-check"
+        id="password-check"
+        placeholder="비밀번호를 다시 한 번 입력해 주세요"
+      />
+      <!-- 눈 모양 아이콘 (필요시 추가) -->
+      <button type="button" class="eye-icon-btn" aria-label="비밀번호 표시">
+        <i class="fa-regular fa-eye-slash"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 4. 회원가입 화면 - 회원가입 버튼 -->
+  <!-- <a class="signup-button" href="./signup">회원가입</a> -->
+  <button type="submit" class="signup-btn" href="./signup">회원가입</button>
+</form>
