@@ -260,3 +260,15 @@
   font-size: 14px;
   font-weight: 500;
 }
+
+/* Privacy - 개인정보 처리 방침 style */
+.privacy-statement {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+/* FAQ - 자주 묻는 질문 style */
+.faq-content {
+  font-size: 20px;
+  font-weight: 300;
+}
