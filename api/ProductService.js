@@ -5,7 +5,7 @@ import axios from "axios";
 // instance 선언
 const instance = axios.create({
   baseURL: "https://panda-market-api-crud.vercel.app",
-  timeout: 3000,
+  timeout: 10000,
 });
 
 // 상품 조회 (10페이지씩) - 파라메터 선언 방법 1
@@ -14,7 +14,7 @@ export async function getProductList(params = {}) {
   return res.data;
 }
 
-// 상품 조회 (10페이지씩) - 파라메터 선언 방법 2
+// 상품 조회 (10페이지씩) - 파라메터 선언 방법 2 (참고용)
 // export async function getProductList(page, pageSize, keyword) {
 //   const res = await instance.get("/products", {
 //     params: { page: page, pageSize: pageSize, keyword: keyword },

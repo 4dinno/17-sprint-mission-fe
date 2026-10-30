@@ -31,61 +31,93 @@ const modiProduct = {
   images: [],
   tags: ["전자제품"],
   price: 2000000,
-  description: "더 좋아진 절전형 양문형 냉장고, 강력 할인!!!",
+  description: "너무 좋아진 절전형 양문형 냉장고, 절찬 판매 중 ~~~!!!",
   name: "양문형 냉장고(수정)",
 };
 
 // 게시글 등록용 샘플 data
 const newArticle = {
-  image: "string",
+  image: "https://example.com/...",
   content: "게시글 내용입니다.",
   title: "게시글 제목입니다.",
 };
 
 const modiArticle = {
-  image: "string",
+  image: "https://example.com/...",
   content: "안전한 중고거래를 위한 다음의 규정을 준수하여 주세요.",
-  title: "중고거래 규정.",
+  title: "중고거래 규정",
 };
 
 // ------------------ 1. 상품 관리 ----------------------------
 
 try {
-  // // 상품 조회 (10페이지씩) - 인자 선언 방법 1
-  // const productList = await getProductList({
-  //   page: 1,
-  //   pageSize: 10,
-  //   keyword: "",
-  // });
-  // // console.log(`상품 조회(10페이지씩): `, productList);
-  // // 상품 조회 (10페이지씩) - 인자 선언 방법 2
-  // // const productList = await getProductList(1, 10, "");
+  // 상품 조회 (10페이지씩) - 인자 선언 방법 1
+  const productList = await getProductList({
+    page: 1,
+    pageSize: 10,
+    keyword: "",
+  });
+  const { list } = productList;
+  console.log(`상품 조회(10페이지씩): `, list[0]);
+  // 상품 조회 (10페이지씩) - 인자 선언 방법 2 (참고용)
+  // const productList = await getProductList(1, 10, "");
 
-  // // 상품 조회 (1건씩) (상품 ID, 예: 4445, 4446, 4466, 4483)
-  // const product = await getProduct("4483");
-  // console.log(`상품 조회(1건): `, product);
+  // 상품 조회 (1건씩) (상품 ID, 예: 4445, 4446, 4466, 4483)
+  const product = await getProduct("4483");
+  console.log(`상품 조회(1건): `, product);
 
-  // // 상품 생성 (productData 포함 항목: name, description, price, tags, images)
-  // let newProd = await createProduct(newProduct);
-  // console.log(`신규 상품ID: `, newProd.id);
-  // console.log(`등록 결과: `, newProd);
+  // 상품 등록 (productData 포함 항목: name, description, price, tags, images)
+  let newProd = await createProduct(newProduct);
+  console.log(`상품 등록: `, newProd);
 
-  let targetId = "4549";
+  // let targetId = newProd.id;
   // 상품 정보 수정 (상품 ID) --* 테스트 위해 나머지는 모두 주석처리함 (위까지는 정상 진행됨)
-  console.log(`타켓 Id: `, targetId);
-  const modiProd = await patchProduct(targetId, modiProduct);
+  const modiProd = await patchProduct(newProd.id, modiProduct);
   console.log(`상품 수정: `, modiProd);
 
   // 상품 삭제 (상품 ID)
-  // const delProd = await deleteProduct(newProd.id);
-  // console.log(`상품 삭제: `, delProd);
+  const delProd = await deleteProduct(newProd.id);
+  console.log(`상품 삭제: `, delProd);
 } catch (e) {
   if (e.response) {
     console.log(`Error Code: `, e.response.status);
     console.log(`Error Mesaage: `, e.response.data);
   } else {
-    console.log(`Request에 실패하였습니다. ${e.message}`);
+    console.log(`상품 관련 Request에 실패하였습니다. ${e.message}`);
   }
 }
 
 // ------------------ 2. 게시판 관리 ----------------------------
+try {
+  // 게시글 조회 (10페이지)
+  const articleList = await getArticleList({
+    page: 1,
+    pageSize: 10,
+    keyword: "",
+  });
+  const { list } = articleList;
+  console.log(`게시글 조회(10페이지): `, list[0]);
+
+  // 게시글 조회 (1건) (게시글 Id, 예: 7304, 7303, 7303, 7296)
+  const article = await getArticle("7296");
+  console.log(`게시글 조회(1건): `, article);
+
+  // 게시글 등록
+  const newArti = await createArticle(newArticle);
+  console.log(`게시글 등록: `, newArti);
+
+  // 게시글 수정 (게시글 Id)
+  const modiArti = await patchArticle(newArti.id, modiArticle);
+  console.log(`게시글 수정: `, modiArti);
+
+  // 게시글 삭제 (게시글 Id)
+  const delArti = await deleteArticle(newArti.id);
+  console.log(`게시글 삭제: `, delArti.id);
+} catch (e) {
+  if (e.response) {
+    console.log(`Error Code: `, e.response.status);
+    console.log(`Error Mesaage: `, e.response.data);
+  } else {
+    console.log(`게시글 관련 Request에 실패하였습니다. ${e.message}`);
+  }
+}
