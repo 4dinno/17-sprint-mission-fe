@@ -1,0 +1,7 @@
+.DS_Store
+.vscode/
+node_modules/
+
+# 로컬 전용 답안 (커밋/푸시하지 않음)
+_solutions/
+
