@@ -42,4 +42,68 @@ _위 이미지는 판다마켓의 대표 이미지입니다._ 📸
 
 ---
 
+# 스프린트 미션 3 과제 (26.11.03)
+
+## **과제 목표**
+
+- 판다마켓 내에 두 가지 주요 API(Article API와 Product API)를 사용하여 다양한 CRUD(생성, 읽기, 업데이트, 삭제) 기능 구현
+
+## **요구 사항**
+
+- [ ] Github에 스프린트 미션 PR을 만들어 주세요.
+- [ ] API 명세(Article API, Product API) : https://panda-market-api-crud.vercel.app/docs
+- [ ] Article API를 이용하여 아래 함수들을 구현해 주세요.
+  - [ ] `getArticleList()` : GET 메소드를 사용, `page`, `pageSize`, `keyword` 쿼리 파라미터 이용
+  - [ ] `getArticle()` : GET 메소드를 사용해 주세요.
+  - [ ] `createArticle()` : POST 메소드를 사용, request body에 `title`, `content`, `image` 를 포함
+  - [ ] `patchArticle()` : PATCH 메소드를 사용.
+  - [ ] `deleteArticle()` : DELETE 메소드를 사용.
+- [ ] `fetch` 혹은 `axios`를 이용 , 응답의 상태 코드가 2XX가 아닐 경우, 에러 메시지를 콘솔에 출력.
+- [ ] `.then()` 메소드를 이용하여 비동기 처리
+- [ ] `.catch()` 를 이용하여 오류 처리
+- [ ] Product API를 이용하여 아래 함수들을 구현해 주세요.
+  - [ ] `getProductList()` : GET 메소드를 사용, `page`, `pageSize`, `keyword` 쿼리 파라미터를 이용.
+  - [ ] `getProduct()` : GET 메소드를 사용.
+  - [ ] `createProduct()` : POST 메소드를 사용, request body에 `name`, `description`, `price`, `tags`, `images` 를 포함.
+  - [ ] `patchProduct()` : PATCH 메소드를 사용.
+  - [ ] `deleteProduct()` : DELETE 메소드를 사용.
+- [ ] `async/await` 을 이용하여 비동기 처리.
+- [ ] `try/catch` 를 이용하여 오류 처리.
+- [ ] 구현한 함수들을 아래와 같이 파일을 분리해 주세요.
+  - [ ] **export**를 활용.
+  - [ ] `ProductService.js` 파일 **Product** API 관련 함수들을 작성.
+  - [ ] `ArticleService.js` 파일에 **Article** API 관련 함수들을 작성.
+- [ ] 이외의 코드들은 모두 `main.js` 파일에 작성해 주세요.
+  - [ ] **import**를 활용.
+  - [ ] 각 함수를 실행하는 코드를 작성하고, 제대로 동작하는지 확인.
+
+## **코딩 후기**
+
+**[1] then.catch 작동 방식 고찰**
+
+1. 체이닝(Chaining)을 위한 return
+
+- .then() 내부에서 다음 비동기 함수를 실행할 때, 필히 return 키워드를 붙여주어야 앞선 작업이 완전히 끝날 때까지 기다렸다가 다음 .then()으로 순서대로 넘어감. (return을 빼먹으면 뒤죽박죽 실행되거나 에러가 남.)
+
+2. 이전 데이터의 전달 (Scope 공유 문제 해결)
+
+- async/await 방식에서는 변수(newArti)를 선언해두고 아래쪽 코드에서 자유롭게 가져다 쓸 수 있었지만, .then() 방식은 스코프가 각 함수 블록 안에 갇히게 됨.
+- 따라서 등록(createArticle)에서 얻은 newArti 데이터를 수정(patchArticle)과 삭제(deleteArticle) 단계에서도 계속 사용하기 위해 체인 구조 안에서 값을 아래로 물려주는 형태로 작성해야 함.
+
+3. 통합 에러 처리 (.catch)
+
+- 중간에 어떤 단계(목록 조회, 1건 조회, 등록, 수정, 삭제)에서든 에러가 발생하면 즉시 모든 .then()들을 건너뛰고 맨 아래에 있는 단 하나의 .catch()로 모여서 일괄 처리됨 (기존 try...catch의 catch 역할과 일치함)
+
+**[2] then..catch방식은 try..catch방식에 비해 더 읽기 어렵고 비직관적임 확인**
+
+1. 스코프(Scope) 격리와 값 전달의 번거로움
+
+- async/await에서는 변수를 한 번 선언해두면 아래쪽 코드에서 언제든 편하게 꺼내 쓸 수 있지만, .then() 방식은 각 단계마다 함수 블록({})이 새로 열리기 때문에 앞 단계의 변수(newArti 같은 값)를 다음 단계로 넘기려면 계속 return으로 물려주거나 안쪽으로 파고들어야 함. 이 때문에 코드가 복잡해짐.
+
+2. 사람의 사고 흐름과 다른 구조
+
+- 보통 글을 읽을 때나 일을 처리할 때 위에서 아래로 순차적인 흐름을 기대하지만 .then() 체이닝은 함수 안에 함수가 계속 맞물려 들어가는 구조여서, 코드가 길어질수록 어디쯤 와 있고, 어떤 데이터를 가지고 있는 건지 파악하기가 매우 힘듦.
+
+---
+
 본 프로젝트는 [코드잇](https://www.codeit.kr)의 소유이며, 교육 목적으로만 사용됩니다. © 2026 Codeit. All rights reserved.
