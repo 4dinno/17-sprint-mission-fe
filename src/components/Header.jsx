@@ -1,17 +1,40 @@
-////
-export default function Header() {
-  return (
-    // Header: 판다마켓 로고 및 로그인 버튼
-    <header class="site-header">
-      <nav class="header-content" aria-label="주요 메뉴">
-        <a class="logo" href="">
-          <img class="logo-face" src="/panda_logo.png" alt="" />
-          <img class="logo-text" src="/panda_sign.png" alt="판다마켓 홈" />
-        </a>
+import { Link, useLocation } from "react-router-dom";
 
-        <a class="login-button" href="login.html">
+export default function Header() {
+  const location = useLocation();
+
+  const isLandingPage = location.pathname === "/";
+  const isItemsPage = location.pathname === "/items";
+
+  return (
+    <header className="site-header">
+      <nav className="header-content" aria-label="주요 메뉴">
+        <div className="logo-nav-box">
+          <Link className="logo" to="/">
+            <img className="logo-face" src="/landing/panda_logo.png" alt="" />
+            <img
+              className="logo-text"
+              src="/landing/panda_sign.png"
+              alt="판다마켓 홈"
+            />
+          </Link>
+
+          {!isLandingPage && (
+            <div className="nav-links">
+              <Link to="/blog">자유게시판</Link>
+              <Link
+                to="/items"
+                style={{ color: isItemsPage ? "#3692ff" : "#333333" }}
+              >
+                중고마켓
+              </Link>
+            </div>
+          )}
+        </div>
+
+        <Link className="login-button" to="/login">
           로그인
-        </a>
+        </Link>
       </nav>
     </header>
   );
